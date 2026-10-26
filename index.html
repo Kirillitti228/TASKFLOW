@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b0d14">
+    <meta name="description" content="TASKFLOW - a simple and modern task manager.">
+    <title>TASKFLOW — Smart To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <a href="#" class="brand" aria-label="TASKFLOW home">
+                <span class="brand-icon">✓</span>
+                <span>TASK<span class="brand-accent">FLOW</span></span>
+            </a>
+
+            <div class="sidebar-label">WORKSPACE</div>
+            <nav class="navigation" aria-label="Task filters">
+                <button class="nav-item active" data-filter="all" type="button">
+                    <span class="nav-icon">▦</span> All tasks
+                    <span class="nav-count" id="nav-all-count">0</span>
+                </button>
+                <button class="nav-item" data-filter="active" type="button">
+                    <span class="nav-icon">◷</span> In progress
+                    <span class="nav-count" id="nav-active-count">0</span>
+                </button>
+                <button class="nav-item" data-filter="completed" type="button">
+                    <span class="nav-icon">✓</span> Completed
+                    <span class="nav-count" id="nav-completed-count">0</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-tip">
+                    <div class="tip-icon">✦</div>
+                    <h3>Small steps matter.</h3>
+                    <p>Every completed task brings you closer to your goals.</p>
+                </div>
+                <p class="sidebar-footer">TASKFLOW <span>•</span> PERSONAL PLANNER</p>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <div class="breadcrumb">Workspace <span>/</span> My tasks</div>
+                <div class="status-pill"><span class="status-dot"></span> Your personal workspace</div>
+            </header>
+
+            <section class="welcome-section">
+                <div>
+                    <p class="eyebrow">YOUR PRODUCTIVITY SPACE</p>
+                    <h1>Make today <span>count.</span></h1>
+                    <p class="welcome-description">Organize your tasks. Focus on what matters.</p>
+                </div>
+                <div class="welcome-decoration" aria-hidden="true">✳</div>
+            </section>
+
+            <section class="stats-grid" aria-label="Task statistics">
+                <article class="stat-card">
+                    <div class="stat-top"><span class="stat-label">Total tasks</span><span class="stat-icon purple-icon">▦</span></div>
+                    <div class="stat-value" id="total-count">0</div>
+                    <div class="stat-note">All your tasks</div>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-top"><span class="stat-label">In progress</span><span class="stat-icon blue-icon">◷</span></div>
+                    <div class="stat-value" id="active-count">0</div>
+                    <div class="stat-note">Still to be done</div>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-top"><span class="stat-label">Completed</span><span class="stat-icon green-icon">✓</span></div>
+                    <div class="stat-value" id="completed-count">0</div>
+                    <div class="stat-note">Tasks finished</div>
+                </article>
+                <article class="stat-card progress-card">
+                    <div class="stat-top"><span class="stat-label">Daily progress</span><span class="stat-icon orange-icon">↗</span></div>
+                    <div class="stat-value"><span id="progress-percent">0</span><span class="percent-sign">%</span></div>
+                    <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+                </article>
+            </section>
+
+            <section class="task-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">YOUR WORKSPACE</p>
+                        <h2>My tasks <span class="heading-count" id="heading-count">0</span></h2>
+                    </div>
+                    <button class="clear-button" id="clear-completed" type="button">Clear completed</button>
+                </div>
+
+                <form class="task-form" id="task-form">
+                    <label class="sr-only" for="task-input">Task name</label>
+                    <span class="input-plus" aria-hidden="true">+</span>
+                    <input type="text" id="task-input" placeholder="What needs to be done?" maxlength="120" autocomplete="off" required>
+                    <label class="sr-only" for="task-priority">Task priority</label>
+                    <select id="task-priority" aria-label="Task priority">
+                        <option value="low">Low priority</option>
+                        <option value="medium" selected>Medium priority</option>
+                        <option value="high">High priority</option>
+                    </select>
+                    <button class="add-button" type="submit"><span>+</span> Add task</button>
+                </form>
+
+                <div class="toolbar">
+                    <div class="filter-tabs" role="group" aria-label="Filter tasks">
+                        <button class="filter-tab active" data-filter="all" type="button">All</button>
+                        <button class="filter-tab" data-filter="active" type="button">Active</button>
+                        <button class="filter-tab" data-filter="completed" type="button">Completed</button>
+                    </div>
+                    <label class="search-box">
+                        <span aria-hidden="true">⌕</span>
+                        <span class="sr-only">Search tasks</span>
+                        <input id="search-input" type="search" placeholder="Search tasks...">
+                    </label>
+                </div>
+
+                <div class="task-list" id="task-list" aria-live="polite"></div>
+                <div class="list-footer">
+                    <span><span class="footer-dot"></span> Saved locally in your browser</span>
+                    <span id="footer-count">0 tasks remaining</span>
+                </div>
+            </section>
+
+            <footer class="main-footer">
+                <span>Made for a more productive day.</span>
+                <span>TASKFLOW <span class="footer-separator">/</span> 1.0</span>
+            </footer>
+        </main>
+    </div>
+</body>
+</html>
